@@ -5,6 +5,12 @@ inputs:
   proto_dir:
     description: 'Directory of proto'
     required: true
+  organization:
+    description: 'Organization of maven repository'
+    required: true
+  name:
+    description: 'Name of maven repository'
+    required: true
   group:
     description: 'Group when upload to maven repository'
     required: true
@@ -56,6 +62,8 @@ runs:
       working-directory: grpc-stub-action
       run: ./gradlew publish
       env:
+        OWNER: ${{ inputs.organization }}
+        REPO_NAME: ${{ inputs.name }}
         GROUP: ${{ inputs.group }}
         ARTIFACT_ID: ${{ inputs.artifact_id }}
         VERSION: ${{ inputs.version }}
