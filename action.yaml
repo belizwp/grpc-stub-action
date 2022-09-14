@@ -24,14 +24,19 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: Checkout builder source code
+      uses: actions/checkout@v3
+      with:
+        repository: belizwp/grpc-stub-action
+        ref: feature/jvm
+        path: grpc-stub-action
+
     - name: Prepare proto files
       shell: bash
       env:
         PROTO_DIR: ${{ inputs.proto_dir }}
       run: |
-        ls
-        ls ..
-        cp ../$PROTO_DIR/* src/main/proto
+        cp $PROTO_DIR/* grpc-stub-action/src/main/proto
 
     - name: Set up JDK 17
       uses: actions/setup-java@v2
@@ -43,9 +48,11 @@ runs:
       uses: gradle/gradle-build-action@v2
 
     - name: Run build
+      working-directory: grpc-stub-action
       run: ./gradlew build
 
     - name: Publish package
+      working-directory: grpc-stub-action
       run: ./gradlew publish
       env:
         GROUP: ${{ inputs.group }}
