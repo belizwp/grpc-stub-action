@@ -29,6 +29,8 @@ runs:
       env:
         PROTO_DIR: ${{ inputs.proto_dir }}
       run: |
+        ls
+        ls ..
         cp ../$PROTO_DIR/* src/main/proto
 
     - name: Set up JDK 17
