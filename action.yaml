@@ -30,6 +30,7 @@ runs:
         repository: belizwp/grpc-stub-action
         ref: feature/jvm
         path: grpc-stub-action
+        token: ${{ inputs.gh_token }}
 
     - name: Prepare proto files
       shell: bash
