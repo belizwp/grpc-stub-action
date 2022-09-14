@@ -1,0 +1,12 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+bin
+
+# Ignore protos in main
+src/main/proto/*.proto
+src/main/proto/**/*.proto
+
+.idea
