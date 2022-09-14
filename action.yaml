@@ -26,6 +26,10 @@ inputs:
   gh_token:
     description: 'Github maven repository upload token'
     required: true
+  ref:
+    description: 'The branch, tag or SHA to checkout builder source code - default is `main`'
+    required: false
+    default: main
 
 runs:
   using: composite
@@ -34,7 +38,7 @@ runs:
       uses: actions/checkout@v3
       with:
         repository: belizwp/grpc-stub-action
-        ref: feature/jvm
+        ref: ${{ inputs.ref }}
         path: grpc-stub-action
         token: ${{ inputs.gh_token }}
 
