@@ -47,6 +47,19 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     }
 }
 
+configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+    android.set(false)
+    outputToConsole.set(true)
+    outputColorName.set("RED")
+    ignoreFailures.set(false)
+    disabledRules.set(setOf("no-wildcard-imports", "experimental:argument-list-wrapping"))
+    enableExperimentalRules.set(true)
+    filter {
+        exclude("**/generated/**")
+        include("**/kotlin/**")
+    }
+}
+
 protobuf {
     protoc {
         artifact = "com.google.protobuf:protoc:3.21.1"
