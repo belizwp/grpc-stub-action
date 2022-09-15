@@ -60,10 +60,12 @@ runs:
 
     - name: Run build
       working-directory: grpc-stub-action
+      shell: bash
       run: ./gradlew build
 
     - name: Publish package
       working-directory: grpc-stub-action
+      shell: bash
       run: ./gradlew publish
       env:
         OWNER: ${{ inputs.organization }}
