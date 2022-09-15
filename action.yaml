@@ -73,5 +73,5 @@ runs:
         GROUP: ${{ inputs.group }}
         ARTIFACT_ID: ${{ inputs.artifact_id }}
         VERSION: ${{ inputs.version }}
-        GITHUB_ACTOR: ${{ inputs.gh_actor }}
-        GITHUB_TOKEN: ${{ inputs.gh_token }}
+        USERNAME: ${{ inputs.gh_actor }}
+        TOKEN: ${{ inputs.gh_token }}
